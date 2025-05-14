@@ -1,6 +1,5 @@
 const port = 3000;
 const localHost = `http://localhost:${port}`;
-
 const posts = [
   {
     id: 1,

@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express();
 let { posts, port, localHost } = require("./posts");
-
+router.use(express.static("./imgs"));
 // # INDEX
 
 router.get("/", (req, res) => {
@@ -32,5 +32,10 @@ router.put("/:id", (req, res) => {
 });
 
 // # DELETE
+router.delete("/:id", (req, res) => {
+  const id = parseInt(req.params.id);
+  posts = posts.filter((currentPost) => currentPost.id !== id);
 
+  res.json({ description: "eliminazione della pizza" + id, data: posts });
+});
 module.exports = router;
